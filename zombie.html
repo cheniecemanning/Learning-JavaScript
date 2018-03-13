@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zombie Game</title>
+    </head>
+
+    <body>
+        <h1>Survival of the least dead...</h1>
+
+
+            <script type="text/javascript">
+                
+
+                alert("You are living in the midst of the zombie apocolypse. You are eating a meal when a zombie creeps up behind you...");
+                var weapon = prompt("You look around you for a weapon and see a knife, fork, cup and a napkin... What do you choose?");
+                var randomNumber = Math.round(Math.random());
+
+                alert("You attack the zombie with your" + " " + weapon);
+
+                if (randomNumber === 0 ){
+                    alert("You get bit... and DIE");
+
+                } else if (randomNumber === 1){
+                    alert("You killed the zombie with your" + " " + weapon + " and you live to see another day...");
+                }
+            </script>
+    </body>
+</html>
+
