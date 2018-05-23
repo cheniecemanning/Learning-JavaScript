@@ -1,0 +1,50 @@
+body {
+
+    background-image: url("../imgs/rock.jpg");
+    background-size: cover;
+}
+
+.keys {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+    .key {
+        width: 5%;
+        background-color: black;
+        border-radius: 10px;
+        border: none;
+        font-weight: bolder;
+        font-size: 20px;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        
+        p {
+            font-size: 10px;
+        }
+       
+        
+      }
+
+      .pretty{
+        width: 8%;
+  
+      background-color:  rgba(139, 7, 100, 0.7);
+      border-radius: 10px;
+      border: 1px solid purple;
+      font-weight: bolder;
+      font-size: 25px;
+      color: white;
+      padding: 15px;
+      margin: 5px; 
+
+      p {
+        font-size: 15px;
+
+      }
+  
+    }
+}
