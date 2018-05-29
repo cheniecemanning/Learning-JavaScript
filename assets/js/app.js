@@ -32,6 +32,8 @@
      this.review = {};
      this.addReview = function(item) {
          item.reviews.push(this.review);
+         this.review = {};
+
      };
     });
 
