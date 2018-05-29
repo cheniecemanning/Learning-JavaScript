@@ -1,15 +1,52 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gem Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/bootstrap.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
-    <script src="/assets/js/angular.min.js"></script>
-</head>
-<body>
-    
-</body>
+<html ng-app="store">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Gem Store</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/main.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="assets/js/angular.min.js"></script>
+        <script src="assets/js/app.js"></script>
+
+    </head>
+
+    <body class="container">
+        <h1> Gemstore</h1>
+        <div class="row" ng-controller="StoreController as store">
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="item in store.items">
+                    <h3> 
+                        {{item.name}}
+                        <em class="pull-right"> {{item.price | currency : "£"}} </em>
+                    </h3>
+                    <ul class="img-thumbnails clearfix">
+                            <li class="small-image pull-left thumbnail" ng-repeat="image in item.image">
+                              <img ng-src="{{image}}" />
+                            </li>
+                    </ul>
+                    <section>
+                        <ul class="nav nav-pills">
+                            <li><a href ng-click="tab = 1">Description</a></li>
+                            <li><a href ng-click="tab = 2">Specification</a></li>
+                            <li><a href ng-click="tab = 3">Reviews</a></li>
+                        </ul>
+                        <div class="panel" ng-show="tab === 1">
+                                <h4> Description: </h4>
+                                <p>{{item.description}}</p>
+                        </div>
+                        <div class="panel" ng-show="tab === 2">
+                                <h4> Specification: </h4>
+                                <p>None yet</p>
+                        </div> <div class="panel" ng-show="tab === 3">
+                                <h4> Reviews: </h4>
+                                <p>none yet</p>
+                        </div>
+                    </section>
+                    <button type="button" class="btn " ng-show="item.canPurchase"> Add to cart </button>
+                </li>
+            </ul>
+        </div>
+    </body>
 </html>
