@@ -24,12 +24,12 @@
                 </h3>
 
                 <div class='gallery' ng-controller="GalleryController as gallery" ng-show="item.image.length">
-                        <img ng-src="{{this.image[gallery.current]}}" />
-                        <ul class="list-inline thumbs">
-                          <li class="thumbnail" ng-repeat="image in item.image">
+                    <img ng-src="{{this.image[gallery.current]}}" />
+                    <ul class="list-inline thumbs">
+                        <li class="thumbnail" ng-repeat="image in item.image">
                             <img ng-src="{{image}}" />
-                          </li>
-                        </ul>
+                        </li>
+                    </ul>
                 </div>
 
                 <section ng-controller="PanelController as panel">
@@ -57,9 +57,38 @@
                     </div>
                     <div class="panel" ng-show="panel.isSet(3)">
                         <h4> Reviews: </h4>
-                        <p>none yet</p>
+                        <blockquote ng-repeat="review in item.reviews">
+                            <b>Stars: {{review.stars}}</b>
+                            <p>{{review.body}}</p>
+                            <cite class="clearfix">—{{review.author}}</cite>
+                        </blockquote>
+
+                        <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(item)" role="form" class="form-group">
+                            <h3>Submit a review</h3>
+                            <div class="container">
+                                <h4>Live Preview</h4>
+                                <blockquote >
+                                        <b>Stars: {{reviewCtrl.review.stars}}</b>
+                                        <p>{{reviewCtrl.review.body}}</p>
+                                        <cite class="clearfix">—{{reviewCtrl.review.author}}</cite>
+                                    </blockquote>
+                            </div>
+                            <fieldset class="form-group">
+                                <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+                                    <option value="">Rate the Product</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+                            </fieldset>
+                        </form>
                     </div>
-                    {{tab}}
                     <button type="button" class="btn " ng-show="item.canPurchase"> Add to cart </button>
                 </section>
             </li>
