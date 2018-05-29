@@ -6,13 +6,23 @@
 
     });
 
-  
+    app.controller ('PanelController', function (){
+        this.tab = 1;
+
+      
+        this.isSet = function(checkTab){
+            return this.tab === checkTab;
+        };
+
+        this.selectTab = function(setTab) {
+            this.tab = setTab;
+        };
+    });
+
     let gem = [
         {
              image: [
-                'assets/imgs/gem-01.gif',
-                'assets/imgs/gem-02.gif',
-                'assets/imgs/gem-03.gif'
+                'assets/imgs/gem-01.gif'
            ],
             name: 'Hexagon',
             price: 5.00,
