@@ -22,13 +22,16 @@
                     {{item.name}}
                     <em class="pull-right"> {{item.price | currency : "£"}} </em>
                 </h3>
-                <ul class="img-thumbnails clearfix">
-                    <li class="small-image pull-left thumbnail" ng-repeat="image in item.image">
-                        <img ng-src="{{image}}" />
-                    </li>
-                </ul>
-                
-                
+
+                <div class='gallery' ng-controller="GalleryController as gallery" ng-show="item.image.length">
+                        <img ng-src="{{this.image[gallery.current]}}" />
+                        <ul class="list-inline thumbs">
+                          <li class="thumbnail" ng-repeat="image in item.image">
+                            <img ng-src="{{image}}" />
+                          </li>
+                        </ul>
+                </div>
+
                 <section ng-controller="PanelController as panel">
                     <ul class="nav nav-pills">
 
