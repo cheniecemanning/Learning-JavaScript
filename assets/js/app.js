@@ -45,10 +45,7 @@
             description: "Hexagonal shaped gemstone",
             canPurchase: true,
             soldOut: false,
-            image: [
-                'assets/imgs/gem-01.gif',
-                'assets/imgs/gem-02.gif'
-            ],
+            image: ['assets/imgs/gem-01.gif'],
             reviews: [
                 {
                     stars: 5,
@@ -79,6 +76,7 @@
             description: "Hexagonal shaped gemstone",
             canPurchase: true,
             soldOut: false,
+            image: ['assets/imgs/gem-02.gif'],
             reviews: []
         },
 
@@ -88,6 +86,7 @@
             description: "Hexagonal shaped gemstone",
             canPurchase: true,
             soldOut: true,
+            image: ['assets/imgs/gem-03.gif'],
             reviews: []
         },
 
@@ -97,6 +96,7 @@
             description: "Hexagonal shaped gemstone",
             canPurchase: true,
             soldOut: true,
+            image: ['assets/imgs/gem-04.gif'],
             reviews: []
         }
     ]
