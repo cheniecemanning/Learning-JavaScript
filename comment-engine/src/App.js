@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class StoryBox extends Component {
+class CommentBox extends Component {
   render() {
     const topicsList = ['HTML', 'JavaScript', 'React'];
     const now = new Date();
@@ -21,4 +21,4 @@ class StoryBox extends Component {
 }
 
 
-export default StoryBox;
+export default CommentBox;
