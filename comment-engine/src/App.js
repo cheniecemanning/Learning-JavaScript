@@ -42,11 +42,22 @@ class CommentBox extends Component {
       return (<Comment  author={comment.author}  body={comment.body} key={comment.id} />); //with a new component built for each elementmin the commentList array
     });
     }
+
+    const _getCommentsTitle = (commentCount) =>{
+      if (commentCount === 0) {
+        return 'No comments yet'; 
+      } else if (commentCount === 1) {
+        return '1 comment';
+      } else {
+        return `${commentCount} comments`;
+      }
+    }
+
     const comments = _getComments();
     return ( 
       <div className="comment-box">
         <h3>Comments</h3>
-        <h4 className="comment-count">{comments.length} comments</h4>
+        <h4 className="comment-count">{_getCommentsTitle(comments.length)}</h4>
         <div className="comment-list">
           {comments}
         </div>
