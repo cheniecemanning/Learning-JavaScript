@@ -26,12 +26,19 @@ class Comment extends Component {
 }
 
 class CommentBox extends Component {
+
+  constructor() {
+    super();
+
+    this.state = { showComments: false};
+  }
+
   render() {
     //Underscore in method names helps distinguish custom methods from React Methods. 
     const _getComments = () => { //This Method will return an array of JSX elements
       const commentList =[
         {id: 1, author: "Cheniece", body: "This is amaze"},
-        {id: 2, author: "Marcus", body: "This is horrible"},
+        {id: 2, author: "Mark", body: "This is horrible"},
         {id: 3, author: "Joan", body: "This is Okay"},
         {id: 4, author: "Harry", body: "This is Aight"}
       ];
@@ -43,7 +50,7 @@ class CommentBox extends Component {
     });
     }
 
-    const _getCommentsTitle = (commentCount) =>{
+    const _getCommentsTitle = (commentCount) => {
       if (commentCount === 0) {
         return 'No comments yet'; 
       } else if (commentCount === 1) {
@@ -53,14 +60,25 @@ class CommentBox extends Component {
       }
     }
 
+    const _handleClick = () => {
+      this.setState({showComments: !this.state.showComments});
+
+
+    }
+
     const comments = _getComments();
+    let commentNodes;
+
+    if (this.state.showComments) {
+      commentNodes = <div className="comment-list">{comments}</div>;
+    }
+
     return ( 
       <div className="comment-box">
+        <button className="btn btn-primary" onClick={_handleClick}>showComments</button>
         <h3>Comments</h3>
         <h4 className="comment-count">{_getCommentsTitle(comments.length)}</h4>
-        <div className="comment-list">
-          {comments}
-        </div>
+        {commentNodes}
       </div>
      );    
   }
