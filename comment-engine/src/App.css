@@ -1,3 +1,44 @@
 body {
     margin-top: 5%;
 }
+
+#comment-app {
+    
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.comment-box {
+    padding: 20px;
+    border-radius:  5px;
+    color: black;
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+
+.comment p{
+    margin-bottom: 0px;
+}
+.comment-footer-delete {
+    color: darkgrey !important;
+}
+.title {
+
+    border-bottom: 1px solid black;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+
+    background-color: black;
+    border-color: black;
+}
+.image img { 
+    max-width: 100%;
+    border-radius: 5px;
+}
+

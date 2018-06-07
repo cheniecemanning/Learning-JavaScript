@@ -4,16 +4,9 @@ import './App.css';
 
 class Comment extends Component {
   render() {
-    const now = new Date();
     return (
       <div className="comment"> 
-        <h5 className="comment-header">{this.props.author}</h5>
-        <p className="comment-body">
-        <b>{this.props.body}</b>
-        <p className="comment-post-time">
-        Post time:{now.toLocaleTimeString()}
-        </p>
-        </p>
+        <p className="comment-header"><strong>{this.props.author}</strong> {this.props.body}</p>
         <div className="commemt-footer">
           <a href="#" className="comment-footer-delete">Delete Comment</a>
         </div>
@@ -62,23 +55,37 @@ class CommentBox extends Component {
 
     const _handleClick = () => {
       this.setState({showComments: !this.state.showComments});
-
-
     }
 
     const comments = _getComments();
     let commentNodes;
+    let buttonText = "Show comments";
 
     if (this.state.showComments) {
       commentNodes = <div className="comment-list">{comments}</div>;
+      buttonText = "Hide comments";
     }
 
     return ( 
-      <div className="comment-box">
-        <button className="btn btn-primary" onClick={_handleClick}>showComments</button>
-        <h3>Comments</h3>
-        <h4 className="comment-count">{_getCommentsTitle(comments.length)}</h4>
+      <div className="row" >
+      <div className="col-md-6 image">
+      <img src="https://static1.squarespace.com/static/5264f7c9e4b0a3247c641860/560bc1dfe4b03cd1555edc15/560bc491e4b0cfeaccf77fcb/1443691810571/julia-trotti-instagram-diary_36.jpg" />
+      </div>
+
+      <div className="comment-box col-md-6">
+        <div className="title">
+          <h3>Comments</h3>
+        </div>
+        <div className="row">
+        <h4 className="col-md-6 comment-count">{_getCommentsTitle(comments.length)}</h4>
+
+        <div className="col-md-6">
+        <button className="float-right btn btn-primary" onClick={_handleClick}>{buttonText}</button>
+        </div>
+
+        </div>
         {commentNodes}
+        </div>
       </div>
      );    
   }
