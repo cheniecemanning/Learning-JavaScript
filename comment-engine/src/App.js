@@ -8,7 +8,7 @@ class Comment extends Component {
       <div className="comment"> 
         <p className="comment-header"><strong>{this.props.author}</strong> {this.props.body}</p>
         <div className="commemt-footer">
-          <button onClick={this.props.onClick} className="comment-footer-delete">Delete Comment</button>
+          <a onClick={this.props.onClick} className="comment-footer-delete">Delete Comment</a>
         </div>
       </div> 
     );
