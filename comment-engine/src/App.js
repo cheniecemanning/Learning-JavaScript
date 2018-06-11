@@ -49,10 +49,8 @@ class CommentBox extends Component {
 
     this.state = { showComments: false,
     comments: [
-      {id: 1, author: "Cheniece", body: "This is amaze"},
-      {id: 2, author: "Mark", body: "This is horrible"},
-      {id: 3, author: "Joan", body: "This is Okay"},
-      {id: 4, author: "Harry", body: "This is Aight"}
+      {id: 1, author: "Mark", body: "This is horrible"},
+      {id: 2, author: "Joan", body: "This is cool"}
     ]
     };
   }

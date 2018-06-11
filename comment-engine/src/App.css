@@ -19,12 +19,24 @@ body {
 }
 
 
-.comment p{
+.comment p {
     margin-bottom: 0px;
 }
 .comment-footer-delete {
     color: darkgrey !important;
 }
+
+.comment-form {
+    margin-top: 15px;
+    border-top: 1px solid;
+    padding: 10px;
+}
+
+.comment-form .form-control{
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
 .title {
 
     border-bottom: 1px solid black;
