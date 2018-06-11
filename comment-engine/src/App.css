@@ -3,14 +3,13 @@ body {
 }
 
 #comment-app {
-    
+
     border: 1px solid;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
 }
 
 .comment-box {
-    padding: 20px;
     border-radius:  5px;
     color: black;
 }

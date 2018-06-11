@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import jQuery from "jquery";
 
 class Comment extends Component {
   render() {
@@ -8,38 +8,70 @@ class Comment extends Component {
       <div className="comment"> 
         <p className="comment-header"><strong>{this.props.author}</strong> {this.props.body}</p>
         <div className="commemt-footer">
-          <a href="#" className="comment-footer-delete">Delete Comment</a>
+          <button onClick={this.props.onClick} className="comment-footer-delete">Delete Comment</button>
         </div>
-       
-
-    
       </div> 
     );
+  };
+};
+
+class CommentForm extends Component {
+  render() {
+    return (
+      <form className="comment-form form-group" onSubmit={this._handleSubmit.bind(this)}>
+        <label><h5>Add a comment</h5></label>
+        <div className="comment-form-fields">
+          <input className="form-control" placeholder="Name:" ref={(input)=> this._author = input}/>
+          <textarea className="form-control" placeholder="Comment:" ref={(textarea)=> this._body = textarea}></textarea>
+        </div>
+        <br />
+        <div className="comment-form-actions">
+          <button className="btn btn-primary" type="submit">
+            Post Comment
+          </button>
+        </div>
+      </form>
+    );
   }
-}
+  _handleSubmit(event) {
+    event.preventDefault();
+    let author = this._author;
+    let body = this._body;
+    this.props.addComment(author.value, body.value);
+  }
+
+  }
 
 class CommentBox extends Component {
 
   constructor() {
     super();
 
-    this.state = { showComments: false};
+    this.state = { showComments: false,
+    comments: [
+      {id: 1, author: "Cheniece", body: "This is amaze"},
+      {id: 2, author: "Mark", body: "This is horrible"},
+      {id: 3, author: "Joan", body: "This is Okay"},
+      {id: 4, author: "Harry", body: "This is Aight"}
+    ]
+    };
   }
 
+
   render() {
-    //Underscore in method names helps distinguish custom methods from React Methods. 
-    const _getComments = () => { //This Method will return an array of JSX elements
-      const commentList =[
-        {id: 1, author: "Cheniece", body: "This is amaze"},
-        {id: 2, author: "Mark", body: "This is horrible"},
-        {id: 3, author: "Joan", body: "This is Okay"},
-        {id: 4, author: "Harry", body: "This is Aight"}
-      ];
       
-    //Each element from commentList is passed as an argument
-    return commentList.map((comment) => { // Returns an array
-      //variables get passed into components as props
-      return (<Comment  author={comment.author}  body={comment.body} key={comment.id} />); //with a new component built for each elementmin the commentList array
+   const _deleteComment = () => {
+    var array = this.state.comments; // make a separate copy of the array
+    //var index = array.indexOf(this.id)
+    array.splice(array, 1);
+    this.setState({array});
+
+  }
+    //Underscore in method names helps distinguish custom methods from React Methods. 
+    const _getComments = () => { 
+    return this.state.comments.map((comment) => {
+      return (
+      <Comment  author={comment.author}  body={comment.body} key={comment.id} />); //with a new component built for each elementmin the commentList array
     });
     }
 
@@ -58,18 +90,20 @@ class CommentBox extends Component {
     }
 
     const comments = _getComments();
-    let commentNodes;
+        let commentNodes = <div onClick={_deleteComment.bind(this.state.comments)} className="comment-list">{comments}</div>;
     let buttonText = "Show comments";
 
     if (this.state.showComments) {
-      commentNodes = <div className="comment-list">{comments}</div>;
       buttonText = "Hide comments";
+    } else {
+      commentNodes = [];
     }
 
     return ( 
+     
       <div className="row" >
       <div className="col-md-6 image">
-      <img src="https://static1.squarespace.com/static/5264f7c9e4b0a3247c641860/560bc1dfe4b03cd1555edc15/560bc491e4b0cfeaccf77fcb/1443691810571/julia-trotti-instagram-diary_36.jpg" />
+      <img src="https://static1.squarespace.com/static/5264f7c9e4b0a3247c641860/560bc1dfe4b03cd1555edc15/560bc491e4b0cfeaccf77fcb/1443691810571/julia-trotti-instagram-diary_36.jpg" alt="cherry" />
       </div>
 
       <div className="comment-box col-md-6">
@@ -84,10 +118,37 @@ class CommentBox extends Component {
         </div>
 
         </div>
-        {commentNodes}
+       {commentNodes}
+        <div className="comment-box">
+      <CommentForm addComment={this._addComment.bind(this)} />
+      </div>
         </div>
       </div>
      );    
+
+   
   }
+  
+
+  _addComment(author, body) {
+    const comment = {
+      id: this.state.comments.length + 1,
+      author,
+      body
+    };
+      this.setState({ comments: this.state.comments.concat([comment]) });
+    }
+
+
+    _fetchComments() {
+      jQuery.ajax({
+        method: 'GET',
+        url: '/api/comments',
+        success: (comments) => {
+          this.setState({comments})
+        }
+      });
+
+    }
 }
 export default CommentBox;
