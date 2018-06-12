@@ -51,7 +51,7 @@ class CommentBox extends Component {
     const _deleteComment = () => {
     var array = this.state.comments; 
     array.splice(array, 1);
-    this.setState({array});
+    this.setState(array);
   }
   
   const _getComments = () => { 
