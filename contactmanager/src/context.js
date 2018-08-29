@@ -11,6 +11,13 @@ const reducer = (state, action) => {
                     contact.id !== action.payload
                 )
             }
+        
+        case 'ADD_CONTACT':
+            return {
+                ...state,
+                contacts: [action.payload, ...state.contacts]
+            }
+
         default:
             return state
     }
@@ -27,7 +34,6 @@ export class Provider extends Component {
             { id: 5, name: 'Loe Doe', phone: '078093015', email: 'loe@gmail.com'}
         ],
         dispatch: action => this.setState(state => reducer(state, action))
-        
     }
 
     render () {

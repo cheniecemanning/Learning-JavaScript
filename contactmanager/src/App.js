@@ -11,11 +11,13 @@ class App extends Component {
   render() {
     return (
       <Provider>
-        <div className="App">
+        <div className="App ">
           <Header brand="Contact Manager" />
         <div className='container'>
-          <AddContacts />
-          <Contacts />
+        <div className="row">
+          <div className="col-6"><AddContacts /></div>
+          <div className="col-6"><Contacts /></div>
+        </div>
         </div>
       </div>
       </Provider>
