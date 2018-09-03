@@ -17,7 +17,6 @@ import { Consumer } from '../../context'
     const { showContactInfo } = this.state
 
     return (
-
       <Consumer>
         {value => { 
           const { dispatch } = value
