@@ -16,7 +16,7 @@ const Header = props => {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link href='/about' className='nav-link'>
+              <Link to='/about' className='nav-link'>
                 About
               </Link>
             </li>
