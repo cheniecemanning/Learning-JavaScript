@@ -1,4 +1,4 @@
-#Code for Code School's free course on Angular.js: Shaping up with Angular.js
+# Code for Code School's free course on Angular.js: Shaping up with Angular.js
 
 To play around:
 
